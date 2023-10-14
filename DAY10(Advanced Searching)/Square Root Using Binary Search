@@ -1,0 +1,34 @@
+# Define a function to calculate the square root of a number using binary search.
+# The 'epsilon' parameter determines the level of precision for the result.
+
+def sqrt_binary_search(number, epsilon=1e-6):
+    # Check if the input number is negative; square root of negative numbers is undefined.
+    if number < 0:
+        raise ValueError("Cannot compute the square root of a negative number")
+
+    # Determine the initial left and right bounds for the binary search based on the input number.
+    if number < 1:
+        left, right = number, 1
+    else:
+        left, right = 0, number
+
+    # Perform binary search to find the square root with the desired precision.
+    while abs(left - right) > epsilon:
+        mid = (left + right) / 2  # Calculate the midpoint between left and right bounds.
+        mid_squared = mid * mid  # Calculate the square of the midpoint.
+
+        # Adjust the bounds based on the midpoint's square value compared to the input number.
+        if mid_squared < number:
+            left = mid  # The midpoint squared is less than the number, so update the left bound.
+        else:
+            right = mid  # The midpoint squared is greater than or equal to the number, so update the right bound.
+
+    # Return the calculated square root value within the desired precision.
+    return (left + right) / 2
+
+# Get user input for the number to calculate the square root of.
+number = float(input())
+result = sqrt_binary_search(number)
+
+# Print the calculated square root result.
+print(result)
