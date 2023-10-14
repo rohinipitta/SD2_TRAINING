@@ -1,0 +1,33 @@
+# Read a list of integers from the user input and split it into individual elements.
+l = list(map(int, input().split()))
+
+# Read an integer 't' from the user input, which will be the target sum to find.
+t = int(input())
+
+# Initialize variables to keep track of the left and right indices in the list 'l'.
+left = 0
+c = 0  # Initialize a counter to count the pairs that sum up to 't'.
+right = len(l) - 1
+
+# Use a while loop to iterate through the list until the left index is less than the right index.
+while left < right:
+    # Calculate the sum of the elements at the left and right indices.
+    sum = l[left] + l[right]
+
+    # Check if the current sum matches the target 't'.
+    if sum == t:
+        c += 1  # Increment the counter if a pair is found.
+
+    # If the current sum is less than 't', move the left index to the right to increase the sum.
+    elif sum < t:
+        left += 1
+
+    # If the current sum is greater than 't', move the right index to the left to decrease the sum.
+    else:
+        right -= 1
+
+# Check if any pairs were found that sum up to 't'.
+if c == 0:
+    print("not found")  # Print "not found" if no such pairs were found.
+else:
+    print("found")  # Print "found" if one or more pairs were found that sum up to 't'.
