@@ -36,7 +36,7 @@ class DoublyLinkedList:
             temp = temp.next
 
 # Example usage:
-l = [2, 4, 6, 8, 9]
+l = list(map(int,input().split()))
 dll = DoublyLinkedList()
 
 for i in l:
